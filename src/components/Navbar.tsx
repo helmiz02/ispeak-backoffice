@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function Navbar() {
+    let token = localStorage.getItem("token") ; 
+    let role = localStorage.getItem("role") ; 
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light shadow">
@@ -26,12 +28,20 @@ export default function Navbar() {
                             </li>
                         </ul>
                         <NavLink className="navbar-brand fw-bolder fs-4 mx-auto" to="/">ISpeak</NavLink>
-                        <NavLink to="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill">
-                            <i className="fa fa-sign-in me-2"> </i> Login</NavLink>
-                        <NavLink to="/register" className="btn btn-outline-primary ms-2 px-4 rounded-pill">
-                            <i className="fa fa-user-plus me-2"> </i> Register</NavLink>
-                        <NavLink to="/statistics" className="btn btn-outline-primary ms-2 px-4 rounded-pill">
-                            <i className="fa fa-user-plus me-2"> </i> Dashboard</NavLink>
+                        {token?
+                                 <button  onClick={()=>{
+                                    localStorage.clear()
+                                    window.location.pathname="/login"
+
+
+                                 }} className="btn btn-outline-primary ms-auto px-4 rounded-pill">
+                                 <i className="fa fa-sign-in me-2"> </i> Déconnexion</button>
+                                 :         <NavLink to="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill">
+                                 <i className="fa fa-sign-in me-2"> </i> Login</NavLink>
+                        
+                    }
+               
+                        
                     </div>
                 </div>
             </nav>

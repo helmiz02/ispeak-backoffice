@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -24,24 +25,9 @@ export default function Register() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { firstName , lastName, phone ,email, password, passwordConfirm } = user;
-        try {
-            const res = await fetch ('api/6246e3541d0307b84e2dcfb5/user/register', {
-                methode : "POST",
-                headers : {
-                    "content-Type" : "application/json"
-                },
-                body : JSON.stringify({
-                    firstName , lastName ,  phone, email  , password, passwordConfirm
-                })
-            })
-            if(res.status === 400 || !res){
-                window.alert("Already Used Details")
-            }else{
-                window.alert("Registered Successfully")
-            }
-        }catch (error) {
-            console.log(error);
-        }
+              axios.post("https://ispeak.api.pfe.anypli.com/api/6246e3541d0307b84e2dcfb5/user/register",user)
+           
+       
     }
   return (
     <div>
@@ -92,7 +78,7 @@ export default function Register() {
                         <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                         <label className="form-check-label" htmlFor="exampleCheck1">I Agree Terms and Conditions</label>
                     </div>
-                        <button type="submit" className="btn btn-outline-primary w-100 mt-4 rounded-pill">Register</button>
+                        <button type="submit" className="btn btn-outline-primary w-100 mt-4 rounded-pill" onClick={handleSubmit}>Register</button>
                 </form>
             </div>
         </div>
