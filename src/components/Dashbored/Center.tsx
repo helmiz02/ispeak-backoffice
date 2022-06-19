@@ -3,9 +3,11 @@ import DataTable from '../shared/DataTable'
 import Sidebar from './Sidebar'
 import axios from 'axios'
 
+
+
 export default function Center() {
 
-  const [centreData, setCentreData] = useState([{}]);
+  const [centreData, setCentreData] = useState([]);
   const [totalData, setTotalData] = useState(0);
   const token = localStorage.getItem("token");
 
@@ -17,7 +19,16 @@ export default function Center() {
     })
   }, [])
 
-  const columns =[{}]
+  const columns = [
+    { id: 'logo', label: 'Logo', minWidth: 170 },
+    { id: 'name', label: 'Name', minWidth: 170 },
+    { id: 'phone', label: 'Phone', minWidth: 170 },
+    { id: 'language', label: 'Language', minWidth: 170 },
+    { id: 'color1', label: 'Color 1', minWidth: 170 },
+    { id: 'color2', label: 'Color 2', minWidth: 170 },
+    { id: 'color3', label: 'Color 3', minWidth: 170 },
+    { id: 'actions', label: 'Actions', minWidth: 170 },
+  ];
   console.log(centreData, totalData);
 
   return (
@@ -29,7 +40,7 @@ export default function Center() {
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 className="h2">Center</h1>
           <div className="btn-toolbar mb-2 mb-md-0">
-            <div className="btn-group me-2">
+            {/* <div className="btn-group me-2">
               <button
                 type="button"
                 className="btn btn-sm btn-outline-secondary"
@@ -42,45 +53,14 @@ export default function Center() {
               >
                 Export
               </button>
-            </div>
-            <button
-              type="button"
-              className="btn btn-sm btn-outline-secondary dropdown-toggle"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="feather feather-calendar"
-                aria-hidden="true"
-              >
-                <rect
-                  x="3"
-                  y="4"
-                  width="18"
-                  height="18"
-                  rx="2"
-                  ry="2"
-                ></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              This week
-            </button>
+            </div> */}
           </div>
         </div>
 
-        <h2>Section title</h2>
+
         <div className="table-responsive">
-          <DataTable 
-          // data={centreData} totalData={totalData} columns={columns} 
+          <DataTable
+            data={centreData} totalData={totalData} columns={columns}
           />
         </div>
 
