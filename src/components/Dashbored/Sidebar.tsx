@@ -51,7 +51,7 @@ export default function Sidebar() {
               </NavLink>
             </li>
             <li className="nav-item">
-            <NavLink className="nav-link active" to="/course">
+            <NavLink className="nav-link active" to="/AdminProfile">
                 Profile
               </NavLink>
             </li>

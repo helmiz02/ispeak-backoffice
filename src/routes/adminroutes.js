@@ -18,6 +18,8 @@
  import Chat from '../components/Dashbored/Chat'; 
  import CourseDetails from '../components/Dashbored/CourseDetails';  
  import UpdateSession from '../components/Dashbored/UpdateSession';  
+ import AdminProfile from '../components/Dashbored/AdminProfile';
+
 const routesAdmin = [
   {
     path: '/',
@@ -117,6 +119,11 @@ const routesAdmin = [
   {
     path: "sessionUpdate/:id/:idCenter",
     component: UpdateSession,
+    exact: true,
+  },
+  {
+    path: "AdminProfile",
+    component: AdminProfile,
     exact: true,
   },
 

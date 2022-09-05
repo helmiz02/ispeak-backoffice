@@ -19,6 +19,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import moment from 'moment'
 
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
 const Container = styled.span`
 display: inline-flex;
 align-items: center;
@@ -59,6 +62,10 @@ export default function CreateSession({ idSession, course, questionData, session
     const [sessionDataState, setStateSessionDataState] = React.useState({ ...sessionData });
     const handleOpen = () => setOpen(true);
 
+    const [message, setMessage] = useState("");
+  const [show, setShow] = useState(false);
+  const token = localStorage.getItem("token");
+
     const columnsCourse = [
         { id: 'id', label: 'Id', minWidth: 170 },
         { id: 'name', label: 'Name', minWidth: 170 },
@@ -68,6 +75,21 @@ export default function CreateSession({ idSession, course, questionData, session
     React.useEffect(() => {
         setStateSessionDataState({ ...sessionData })
     }, [sessionData])
+
+    const onDelete = (id) => {
+        if (window.confirm("are you sure to delete this course")) {
+
+            axios.delete(`http://localhost:5000/api/${idCenter}/course/${id}/${idSession}`, { headers: { Authorization: `${token}` } })
+              .then(res => {
+                setMessage(res.data.message)
+                setShow(true)
+                setTimeout(() => {
+                  setShow(false)
+                }, 4000);
+              })
+            window.location.reload(false);
+          }
+    }
 
     const handelClick = (id) => {
         navigate(`/courseDetails/${id}/${idCenter}`);
@@ -230,6 +252,7 @@ export default function CreateSession({ idSession, course, questionData, session
                                                 <TableCell align="left">{row.name}</TableCell>
                                                 <TableCell align="left">
                                                     <div ><Button color="secondary" onClick={() => handelClick(row._id)} >Details</Button></div>
+                                                    <div ><Button color="error" onClick={() => onDelete(row._id)} >Delete</Button></div>
                                                 </TableCell>
                                             </TableRow>
                                         ))}

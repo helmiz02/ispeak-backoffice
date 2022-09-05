@@ -76,7 +76,7 @@ export default function LearnerAdminTable({ data, columns, totalData , idCenter 
               <TableCell align="left">{row.email}</TableCell>
               <TableCell align="left">{row.phone}</TableCell>
               <TableCell align="left">
-                <div><Button color="error" onClick={()=>OnDelete(row._id)}  >Delete</Button></div>
+                <div><Button style={{color:"rgb(211,47,47)"}} onClick={()=>OnDelete(row._id)}  >Delete</Button></div>
               </TableCell>
             </TableRow>
           )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}

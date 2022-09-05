@@ -43,7 +43,7 @@ export default function InstructorTable({ data, columns, totalData , idCenter })
   const OnDelete = (id)=>{
     if(window.confirm("are you sure to delete this instructor")){
  
-     axios.delete(`http://localhost:5000/api/${idCenter}/user/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`http://localhost:5000/api/delete-user_center/${id}/${idCenter}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)
@@ -72,7 +72,7 @@ export default function InstructorTable({ data, columns, totalData , idCenter })
           </TableRow>
         </TableHead>
         <TableBody>
-          {dataD.map((row) => (
+          {data.map((row) => (
             <TableRow
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -88,7 +88,7 @@ export default function InstructorTable({ data, columns, totalData , idCenter })
                 <div><Button style={{color:"rgb(211,47,47)"}} onClick={()=>OnDelete(row._id)}  >Delete </Button></div>
               </TableCell>
             </TableRow>
-          ))}
+          )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
         </TableBody>
       </Table>
     </TableContainer>
