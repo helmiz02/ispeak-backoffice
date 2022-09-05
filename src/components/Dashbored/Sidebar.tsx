@@ -1,17 +1,20 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
+import routesSuperAdmin from '../../routes/superadminroutes' 
+import routesAdmin from '../../routes/adminroutes' 
+import learneroutes from '../../routes/learnedrotues' 
 export default function Sidebar() {
+  let role = localStorage.getItem("role")
   return (
     <nav  id="sidebarMenu"  className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div className="position-sticky pt-3">
           <ul className="nav flex-column">
+            {role ==="superAdmin" ? <>
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/statistic">
-                Statistic
+              <NavLink className="nav-link active" aria-current="page" to="/home">
+                Home
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink className="nav-link" to="/center">
                 Centers
@@ -20,58 +23,56 @@ export default function Sidebar() {
             
             <li className="nav-item">
               <NavLink className="nav-link" to="/admin">
-                Adminis
+                Admins
               </NavLink>
             </li>
-
             <li className="nav-item">
-              <NavLink className="nav-link" to="/instructor">
-                
+              <NavLink className="nav-link" to="/instructorSuperAdmin">
                 Instructors
               </NavLink>
             </li>
-
             <li className="nav-item">
-              <NavLink className="nav-link" to="/session">
-                Session
-              </NavLink>
-            </li>
-            
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/challenge">
-                Challenge
+              <NavLink className="nav-link" to="/learnerSuperAdmin">
+                Learners
               </NavLink>
             </li>
 
+          
+            </>
+            :role ==="admin" ?<>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/course">
-                Course
+            <NavLink className="nav-link active" aria-current="page" to="/home">
+                Home
               </NavLink>
             </li>
-
             <li className="nav-item">
-              <NavLink className="nav-link" to="/level">
-                Level
+              <NavLink className="nav-link" to="/centerAdmin">
+                Center
               </NavLink>
             </li>
-
             <li className="nav-item">
-              <NavLink className="nav-link" to="/exercice">
-                Exercice
+            <NavLink className="nav-link active" to="/course">
+                Profile
               </NavLink>
             </li>
-
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/learner">
-                Learner 
+            </>
+          :<>
+           <li className="nav-item">
+            <NavLink className="nav-link active" aria-current="page" to="/home">
+                Home
               </NavLink>
             </li>
-
             <li className="nav-item">
-              <NavLink className="nav-link" to="/message">
-                Message
+              <NavLink className="nav-link" to="/centerInstructor">
+                Center
               </NavLink>
             </li>
+            <li className="nav-item">
+            <NavLink className="nav-link active" to="/course">
+                Profile
+              </NavLink>
+            </li>
+          </>}
           </ul>
         </div>
       </nav>

@@ -17,7 +17,8 @@ export default function Login() {
         ).then(response => {
             localStorage.setItem("token", response.data.user.token)
             localStorage.setItem("role", response.data.user.role)
-            window.location.pathname = "/";
+            localStorage.setItem("id", response.data.user._id)
+            window.location.pathname = "/home";
         }
 
 
@@ -33,7 +34,7 @@ export default function Login() {
             <div className="container shadow my-5">
                 <div className="row">
                     <div className="col-md-5 d-flex flex-column align-items-center text-white justify-content-center form">
-                        <h1 className="display-4 fw-bolder">Welcome Back</h1>
+                        <h1 className="display-4 fw-bolder">Welcome</h1>
                         <p className="lead text-center">Enter Your Credentials To Login</p>
                         {/* <h5 className="mb-4">OR</h5> */}
                         {/* <NavLink to="/register" className="btn btn-outline-light rounded-pill pb-2 w-50">
@@ -61,10 +62,6 @@ export default function Login() {
                                     : null
 
                                 }
-                            </div>
-                            <div className="mb-3 form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
                             </div>
                             <button type="submit" className="btn btn-primary w-100 mt-4 rounded-pill" onClick={(e) => submitForm(e)}>Login</button>
                         </form>

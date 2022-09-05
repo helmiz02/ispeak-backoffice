@@ -19,9 +19,6 @@ export default function Footer() {
                                 &copy; 2022 - ISpeak Dashboard
                             </Typography>
                         </Box>
-                        <Typography sx={{ pt: { xs: 2, md: 0 } }} variant="subtitle1">
-                            Crafted by <Link href="https://www.linkedin.com/in/abir-lakhal-67b016174/" target="_blank" rel="noopener noreferrer">Abir.Lakhal</Link>
-                        </Typography>
                     </Box>
                 </Container>
             </section>

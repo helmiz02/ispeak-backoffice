@@ -28,6 +28,7 @@ export default function Navbar() {
                             </li>
                         </ul> */}
                         <NavLink className="navbar-brand fw-bolder fs-4 " to="/">ISpeak</NavLink>
+                        <h5 className="ms-auto px-4 " >Practice reading, listenning and Speaking with us</h5>
                         {token ?
                             <button onClick={() => {
                                 localStorage.clear()
@@ -36,8 +37,8 @@ export default function Navbar() {
 
                             }} className="btn btn-outline-primary ms-auto px-4 rounded-pill">
                                 <i className="fa fa-sign-in me-2"> </i> Logout</button>
-                            : <NavLink to="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill">
-                                <i className="fa fa-sign-in me-2"> </i> Login</NavLink>
+                            : <></>/*<NavLink to="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill">
+                                <i className="fa fa-sign-in me-2"> </i> Login</NavLink>*/
 
                         }
 

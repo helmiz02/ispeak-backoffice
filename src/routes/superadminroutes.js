@@ -1,15 +1,19 @@
 import Statistics from "../components/Dashbored/Statistic";
 import Admin from "../components/Dashbored/Admin";
 import Center from "../components/Dashbored/Center";
-import Challenge from "../components/Dashbored/Challenge";
 import Course from "../components/Dashbored/Course";
 import Session from "../components/Dashbored/Session";
 import Messages from "../components/Dashbored/Messages";
-import Level from "../components/Dashbored/Level";
 import Learner from "../components/Dashbored/Learner";
 import Instructor from "../components/Dashbored/Instructor";
-import Exercice from "../components/Dashbored/Exercice";
-
+import Exercice from "../components/Dashbored/Exercice"; 
+import DetailsCenter from "../components/Dashbored/DetailsCenter";
+import CreateCenter from "../components/Dashbored/CreateCenter";
+import UpdateCenter from "../components/Dashbored/UpdateCenter";
+import Home from "../components/Dashbored/Home";
+import UpdateAdmin from "../components/Dashbored/UpdateAdmin";
+import LearnerSuperAdmin from "../components/Dashbored/LearnerSuperAdmin";
+import InstructorSuperAdmin from "../components/Dashbored/InstructorSuperAdmin";
 
 const routesSuperAdmin = [
   {
@@ -28,6 +32,26 @@ const routesSuperAdmin = [
     exact: true,
   },
   {
+    path: "/detailsCenter/:id",
+    component: DetailsCenter,
+    exact: true,
+  },
+  {
+    path: "/createCenter",
+    component: CreateCenter,
+    exact: true,
+  },
+  {
+    path: "/updateCenter/:id",
+    component: UpdateCenter,
+    exact: true,
+  },
+  {
+    path: "/updateAdmin/:id",
+    component: UpdateAdmin,
+    exact: true,
+  },
+  {
     path: "/instructor",
     component: Instructor,
     exact: true,
@@ -38,18 +62,8 @@ const routesSuperAdmin = [
     exact: true,
   },
   {
-    path: "/challenge",
-    component: Challenge,
-    exact: true,
-  },
-  {
     path: "/course",
     component: Course,
-    exact: true,
-  },
-  {
-    path: "/level",
-    component: Level,
     exact: true,
   },
   {
@@ -68,8 +82,18 @@ const routesSuperAdmin = [
     exact: true,
   },
   {
+    path: "/learnerSuperAdmin",
+    component: LearnerSuperAdmin,
+    exact: true,
+  },
+  {
+    path: "/instructorSuperAdmin",
+    component: InstructorSuperAdmin,
+    exact: true,
+  },
+  {
     path: "*",
-    component: Statistics,
+    component: Home,
     exact: true,
   },
 ];
