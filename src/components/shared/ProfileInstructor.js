@@ -6,7 +6,7 @@ import { Input } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
 
-export default function ProfileAdmin({ data }) {
+export default function ProfileInstrcutor({ data }) {
 
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
@@ -103,6 +103,12 @@ export default function ProfileAdmin({ data }) {
           <div class="col" style={{ textAlign: 'left' }}>Phone</div>
           <div class="col" style={{ color: '#0071bd' }}>
             {data.phone}
+          </div>
+        </div>
+        <div class="row" style={{ padding: '0.5rem' }}>
+          <div class="col" style={{ textAlign: 'left' }}>Language</div>
+          <div class="col" style={{ color: '#0071bd' }}>
+            {data.language}
           </div>
         </div>
         <div class="row" style={{ padding: '0.5rem' }}>

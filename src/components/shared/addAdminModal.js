@@ -27,8 +27,14 @@ export default function AddAdminModal({open, setOpen,  refreshFornewAdmins, setR
   const [message, setMessage] = useState("");
   const [show, setShow] = useState(false);
   const handleClose = () => setOpen(false);
+
+  const [formErrors, setFormErrors] = React.useState({})
+
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    setFormErrors(validate(form))
+    if(Object.keys(formErrors).length === 0 )
     axios.post('http://localhost:5000/api/create-admin', form, { headers: { Authorization: `${token}` } })
       .then(res => {
         setMessage(res.data.message)
@@ -46,6 +52,37 @@ export default function AddAdminModal({open, setOpen,  refreshFornewAdmins, setR
       .catch(err => setErrors(err.response.data))
 
   }
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const reg = /^[0-9]{8}$/
+    if (!values.firstName) {
+        errors.firstName = "First Name is required";
+    } else if (values.firstName.length < 4 ) {
+      errors.firstName = "First name must be more than 4";
+    }
+    if (!values.lastName) {
+        errors.lastName = "Last Name is required";
+    } else if (values.lastName.length < 4 ) {
+      errors.lastName = "Last name must be more than 4";
+    }
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format"
+    } 
+    if (!values.phone) {
+      errors.phone = "Phone is required";
+    } else if (!reg.test(values.phone)) {
+      errors.phone = "This is not a valid phone format"
+    }
+    if (!values.password) {
+      errors.password = "password is required";
+    } 
+    
+    return errors
+}
 
   const onChangeHandler = (e) => {
   
@@ -72,7 +109,7 @@ export default function AddAdminModal({open, setOpen,  refreshFornewAdmins, setR
             <h4>Create Admin</h4>
         
           <div>
-            <CenterAdmin onChangeHandler={onChangeHandler} onSubmit={onSubmitHandler} handleClose={handleClose} />
+            <CenterAdmin form={form} formErrors={formErrors} onChangeHandler={onChangeHandler} onSubmit={onSubmitHandler} handleClose={handleClose} />
           </div>
           </Box>
       </Modal>

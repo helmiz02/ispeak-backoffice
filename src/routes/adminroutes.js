@@ -117,7 +117,7 @@ const routesAdmin = [
     exact: true,
   },
   {
-    path: "sessionUpdate/:id/:idCenter",
+    path: "sessionUpdate/:id/:idCenter", 
     component: UpdateSession,
     exact: true,
   },

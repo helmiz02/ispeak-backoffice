@@ -12,7 +12,9 @@
  import TestDetails from '../components/Dashbored/DetailsTest';
  import CenterInstructor from '../components/Dashbored/CenterInstructor';
  import Chat from '../components/Dashbored/Chat';
-
+ import CourseDetails from '../components/Dashbored/CourseDetails'; 
+ import LearnerSession from '../components/Dashbored/LearnerSession';  
+ import InstructorProfile from '../components/Dashbored/InstructorProfile'; 
 const routesLearner = [
   {
     path: '/',
@@ -40,7 +42,7 @@ const routesLearner = [
     exact: true,
   },
   {
-    path: "/detailsSession/:id",
+    path: "/detailsSession/:id/:idCenter",
     component: DetailsSession,
     exact: true,
   },
@@ -70,7 +72,7 @@ const routesLearner = [
     exact: true,
   },
   {
-    path: "createcourse",
+    path: "createcourse/:idSession/:idCenter",
     component: CreateCourse,
     exact: true,
   },
@@ -82,6 +84,21 @@ const routesLearner = [
   {
     path: "chat/:id",
     component: Chat,
+    exact: true,
+  },
+  {
+    path: "learnerSession/:id",
+    component: LearnerSession,
+    exact: true,
+  },
+  {
+    path: "courseDetails/:id/:idCenter",
+    component: CourseDetails,
+    exact: true,
+  },
+  {
+    path: "InstructorProfile",
+    component: InstructorProfile,
     exact: true,
   }
    

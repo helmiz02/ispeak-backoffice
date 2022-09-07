@@ -9,13 +9,26 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from '@mui/material/Button';
-
+import TablePagination from "@material-ui/core/TablePagination";
 import InputGroup from "./InputGroup";
 
 export default function CenterInstructorDetails({ data, sessionData, columns, testData, columnsTest, idCenter }) {
 
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
+  
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [dataD, setDatad] = React.useState(data);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
 
   const handleClick = () => {
@@ -28,7 +41,7 @@ export default function CenterInstructorDetails({ data, sessionData, columns, te
     navigate(`/testDetails/${id}/${idCenter}`);
   }
   const handelClick = (id) => {
-    navigate(`/detailsSession/${id}`);
+    navigate(`/detailsSession/${id}/${idCenter}`);
   }
 
   return (
@@ -119,13 +132,22 @@ export default function CenterInstructorDetails({ data, sessionData, columns, te
                 <TableCell align="left">{row.language}</TableCell>
                 <TableCell align="left">{row.instructor.firstName + " " + row.instructor.lastName}</TableCell>
                 <TableCell align="left">
-                  <Button onClick={() => handelClick(row._id)} >Details</Button>
+                  <Button  style={{color:"#9c27b0"}} onClick={() => handelClick(row._id)} >Details</Button>
                 </TableCell>
               </TableRow>
-            ))}
+            )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 15, 20, 25, 50, 100]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
     </div>
 
   );

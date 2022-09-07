@@ -76,8 +76,8 @@ export default function CreateCourse({ refreshFornewCourses, setRefresh, idCente
 
         axios.post(`http://localhost:5000/api/${idCenter}/course/${idSession}`, formData, { headers: { Authorization: `${token}`, 'content-type': 'multipart/form-data' } })
             .then(res => {
-                console.log(res.data.course._id);
-                navigate(`/sessionUpdate/${idSession}/${idCenter}`);
+                console.log(res.data.course._id); 
+                navigate(`/detailsSession/${idSession}/${idCenter}`);
 
             })
             .catch(err => setErrors(err.response.data))

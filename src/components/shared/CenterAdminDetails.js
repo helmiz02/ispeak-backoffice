@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import InputGroup from "./InputGroup";
+import TablePagination from "@material-ui/core/TablePagination";
 
 export default function CenterAdminDetails({ data, sessionData, columns, testData, columnsTest, idCenter }) {
 
@@ -29,6 +30,19 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
   };
   var logo = data.logo
   typeof logo === 'string' ? logo = logo.substr(7) : logo = ""
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [dataD, setDatad] = React.useState(data);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   const OnDetailsTest = (id)=> {
     navigate(`/testDetails/${id}/${idCenter}`);
@@ -215,15 +229,24 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
                 <TableCell align="left">{row.language}</TableCell>
                 <TableCell align="left">{row.instructor.firstName + " " + row.instructor.lastName}</TableCell>
                 <TableCell align="left"> 
-                <Button color="secondary" onClick={() => OnDetailsSession(row._id)} >Details</Button>
-                  <Button onClick={() => onUpdateSession(row._id)} >Update</Button>
-                  <Button color="error" onClick={() => onDeleteSession(row._id)} >Delete</Button>
+                <Button style={{color:"#9c27b0"}} onClick={() => OnDetailsSession(row._id)} >Details</Button>
+                  <Button style={{color:"rgb(25,118,210)"}} onClick={() => onUpdateSession(row._id)} >Update</Button>
+                  <Button style={{color:"rgb(211,47,47)"}} onClick={() => onDeleteSession(row._id)} >Delete</Button>
                 </TableCell>
               </TableRow>
-            ))}
+            )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 15, 20, 25, 50, 100]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
     </div>
 
   );

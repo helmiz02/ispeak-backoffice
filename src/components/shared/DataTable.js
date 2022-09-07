@@ -102,9 +102,9 @@ export default function DataTable({ data, columns, totalData }) {
                 </div>
               </TableCell>
               <TableCell align="left">
-                <div><Button color="secondary" onClick={()=>handelClick(row._id) } >Details</Button></div>
-                <div><Button onClick={()=>OnUpdate(row._id)} >Update center</Button></div>
-                <div><Button color="error" onClick={()=>OnDelete(row._id)}  >Delete center</Button></div>
+                <div><Button style={{color:"#9c27b0"}} onClick={()=>handelClick(row._id) } >Details</Button></div>
+                <div><Button style={{color:"rgb(25,118,210)"}} onClick={()=>OnUpdate(row._id)} >Update center</Button></div>
+                <div><Button style={{color:"rgb(211,47,47)"}} onClick={()=>OnDelete(row._id)}  >Delete center</Button></div>
               </TableCell>
             </TableRow>
           ))}

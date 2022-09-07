@@ -78,8 +78,8 @@ export default function AdminTable({ data, columns, totalData }) {
               <TableCell align="left">{row.email}</TableCell>
               <TableCell align="left">{row.phone}</TableCell>
               <TableCell align="left">
-                <div><Button onClick={()=>OnUpdate(row._id)} >Update</Button></div>
-                <div><Button color="error" onClick={()=>OnDelete(row._id)}  >Delete </Button></div>
+                <div><Button style={{color:"rgb(25,118,210)"}} onClick={()=>OnUpdate(row._id)} >Update</Button></div>
+                <div><Button style={{color:"rgb(211,47,47)"}} onClick={()=>OnDelete(row._id)}  >Delete </Button></div>
               </TableCell>
             </TableRow>
           )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}

@@ -15,6 +15,8 @@ export default function LearnerSession() {
   //http://localhost:5000/api/get-instructor
     axios.get(`http://localhost:5000/api/getLearnerBySession/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setLearnerList(res.data);
+      console.log("hhhhhhh",res.data);
+      
     })
   }, [])
 

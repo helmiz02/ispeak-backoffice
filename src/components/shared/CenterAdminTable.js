@@ -10,11 +10,24 @@ import Chip from "@mui/material/Chip";
 import axios from 'axios'
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
+import TablePagination from "@material-ui/core/TablePagination";
 
 
 export default function DataTable({ data, columns, totalData }) {
   console.log("ppdata", data);
+  
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [dataD, setDatad] = React.useState(data);
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
  
   const navigate = useNavigate();
   
@@ -26,6 +39,7 @@ export default function DataTable({ data, columns, totalData }) {
 
 
   return (
+    <Paper>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -67,12 +81,22 @@ export default function DataTable({ data, columns, totalData }) {
                 </div>
               </TableCell>
               <TableCell align="left">
-              <Button color="secondary" onClick={()=>handelClick(row._id) } >Details</Button>
+              <Button style={{color:"rgb(211,47,47)"}} onClick={()=>handelClick(row._id) } >Details</Button>
               </TableCell>
             </TableRow>
-          ))}
+          )).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
         </TableBody>
       </Table>
     </TableContainer>
+    <TablePagination
+        rowsPerPageOptions={[5, 10, 15, 20, 25, 50, 100]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+    </Paper>
   );
 }

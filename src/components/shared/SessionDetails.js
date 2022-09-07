@@ -17,7 +17,7 @@ import moment from 'moment'
 
 
 export default function CenterDetails({ data, columnsCourse, admin, course, idCenter }) {
-  
+
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
@@ -31,28 +31,29 @@ export default function CenterDetails({ data, columnsCourse, admin, course, idCe
 
   const handelClick = (id) => {
     navigate(`/courseDetails/${id}/${idCenter}`);
-  } 
-  
-
-  const OnDelete = (id) => {
-    if (window.confirm("are you sure to delete this center")) {
-
-      axios.delete(`http://localhost:5000/api/center/${id}`, { headers: { Authorization: `${token}` } })
-        .then(res => {
-          setMessage(res.data.message)
-          setShow(true)
-          setTimeout(() => {
-            setShow(false)
-          }, 4000);
-        })
-      //navigate(`/center`);
-      window.location.reload(false);
-    }
   }
+
+  const onDelete = (id) => {
+    if (window.confirm("are you sure to delete this course")) {
+
+        axios.delete(`http://localhost:5000/api/${idCenter}/course/${id}/${data._id}`, { headers: { Authorization: `${token}` } })
+          .then(res => {
+            setMessage(res.data.message)
+            setShow(true)
+            setTimeout(() => {
+              setShow(false)
+            }, 4000);
+          })
+        window.location.reload(false);
+      }
+}
 
   const OnUpdate = (id) => {
     //navigate(`/courseDetails/${id}/${idCenter}/`);
   }
+  const handelClick2 = (id) => {
+    navigate(`/createcourse/${data._id}/${idCenter}`);
+}
 
 
   return (
@@ -125,10 +126,13 @@ export default function CenterDetails({ data, columnsCourse, admin, course, idCe
           </div>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-md-auto" >
           <h4 style={{ textAlign: 'left', padding: '0.5rem' }}> Course : </h4>
+        </div>
+        <div class="col-md-auto" style={{ padding: '0.5rem' }}>
+          <Button onClick={() => handelClick2()} >Create course</Button>
         </div>
       </div>
       <div class="row" style={{ padding: '0.5rem' }}>
@@ -152,6 +156,7 @@ export default function CenterDetails({ data, columnsCourse, admin, course, idCe
                     <TableCell align="left">{row.name}</TableCell>
                     <TableCell align="left">
                       <div ><Button color="secondary" onClick={() => handelClick(row._id)} >Details</Button></div>
+                      <div ><Button color="error" onClick={() => onDelete(row._id)} >Delete</Button></div>
                     </TableCell>
                   </TableRow>
                 ))}
