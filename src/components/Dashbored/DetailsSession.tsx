@@ -35,7 +35,7 @@ export default function DetailsSession() {
   ];
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setCentreData(res.data);
       setCentreAdmin(res.data.instructor);
       setCourse(res.data.course);
@@ -48,7 +48,7 @@ export default function DetailsSession() {
   const OnDelete = ()=>{
     if(window.confirm("are you sure to delete this session")){
  
-     axios.delete(`http://localhost:5000/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)

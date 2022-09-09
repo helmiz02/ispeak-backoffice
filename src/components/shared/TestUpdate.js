@@ -61,7 +61,7 @@ export default function TestUpdate({  refreshFornewCourses, setRefresh, testData
         
         form.question = questionl
 
-        axios.put(`http://localhost:5000/api/${centerId}/test/${testData._id}`, form, { headers: { Authorization: `${token}` } })
+        axios.put(`https://ispeak.api.pfe.anypli.com/api/${centerId}/test/${testData._id}`, form, { headers: { Authorization: `${token}` } })
             .then(res => {
             navigate(`/testDetails/${testData._id}/${centerId}`);
             })

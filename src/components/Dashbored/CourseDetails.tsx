@@ -23,7 +23,7 @@ export default function DetailsTest() {
 
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${centerId}/course/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${centerId}/course/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setCourseData(res.data);
       setQuestionData(res.data.question)      
     })

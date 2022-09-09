@@ -52,7 +52,7 @@ export default function CenterInstructorDetails({ data, sessionData, columns, te
           <div class="col">
             <img
               src={
-                "http://localhost:5000/" + logo
+                "https://ispeak.api.pfe.anypli.com/" + logo
               }
               alt="logocentre"
               style={{ width: 150 }}

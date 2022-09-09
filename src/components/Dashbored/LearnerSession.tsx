@@ -12,8 +12,8 @@ export default function LearnerSession() {
   const token = localStorage.getItem("token");
  
   useEffect(() => { 
-  //http://localhost:5000/api/get-instructor
-    axios.get(`http://localhost:5000/api/getLearnerBySession/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+  //https://ispeak.api.pfe.anypli.com/api/get-instructor
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/getLearnerBySession/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setLearnerList(res.data);
       console.log("hhhhhhh",res.data);
       

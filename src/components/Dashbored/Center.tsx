@@ -13,9 +13,8 @@ export default function Center() {
   const [totalData, setTotalData] = useState(0);
   const token = localStorage.getItem("token");
 
-  useEffect(() => {//https://ispeak.api.pfe.anypli.com/
-
-    axios.get("http://localhost:5000/api/all-centers/", { headers: { Authorization: `${token}` } }).then(res => {
+  useEffect(() => {
+    axios.get("https://ispeak.api.pfe.anypli.com/api/all-centers/", { headers: { Authorization: `${token}` } }).then(res => {
       setCentreData(res.data.centers);
       setTotalData(res.data.count);
     })
@@ -47,7 +46,7 @@ export default function Center() {
           <h1 className="h2">Centers</h1>
           <div className="btn-toolbar mb-2 mb-md-0">
             {
-            <Button variant="outlined" onClick={()=>handelClick()} >Create new center</Button>
+            <Button variant="outlined" style={{color:"#1976d2"}} onClick={()=>handelClick()} >New center</Button>
             /* <div className="btn-group me-2">
               <button
                 type="button"

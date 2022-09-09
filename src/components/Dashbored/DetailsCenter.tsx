@@ -26,7 +26,7 @@ export default function DetailsCenter() {
 
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${id}/center/`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${id}/center/`, { headers: { Authorization: `${token}` } }).then(res => {
       setCentreData(res.data);
       setCentreAdmin(res.data.admin);
       setTitleData(res.data.name)
@@ -38,7 +38,7 @@ export default function DetailsCenter() {
   const OnDelete = ()=>{
     if(window.confirm("are you sure to delete this center")){
  
-     axios.delete(`http://localhost:5000/api/center/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`https://ispeak.api.pfe.anypli.com/api/center/${id}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)
@@ -65,7 +65,7 @@ export default function DetailsCenter() {
           <div className="btn-toolbar mb-2 mb-md-0">
             {
             <div className="btn-group me-2">
-              <Button variant="outlined"   onClick={()=>OnUpdate()} >Update center</Button>
+              <Button variant="outlined" onClick={()=>OnUpdate()} >Update center</Button>
               <Button variant="outlined" color="error" onClick={()=>OnDelete()}  >Delete center</Button>
             </div>
              }

@@ -29,7 +29,7 @@ export default function UpdateInstructor() {
   const [errors, setErrors] = useState({});
   const [adminData, setAdminData] = useState([]);
   const [refreshFornewAdmins, setRefresh] = useState(false)
-
+  const [language, setLanguage] = useState('');
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
@@ -37,6 +37,9 @@ export default function UpdateInstructor() {
   const [fileName, setFileName] = useState("")
 
   
+  const onChange2 = (event: SelectChangeEvent) => {
+    setLanguage(event.target.value as string);
+  };
 
   const onChangeName = (e: any) => {
     setName(e.target.value);
@@ -86,7 +89,7 @@ export default function UpdateInstructor() {
  
      console.log("====",data)
     
-    axios.put(`http://localhost:5000/api/user/${id}`, data, { headers: { Authorization: `${token}` }  })
+    axios.put(`https://ispeak.api.pfe.anypli.com/api/user/${id}`, data, { headers: { Authorization: `${token}` }  })
       .then(res => {
         alert('User updated Successfully')
         navigate(`/instructor/${idCenter}`);
@@ -95,7 +98,7 @@ export default function UpdateInstructor() {
   }
    useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/user/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/user/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
         console.log("centreDataff",res);
         setAdminData(res.data);
     })
@@ -134,7 +137,7 @@ export default function UpdateInstructor() {
           <div >
 
             <InstructorUpdate 
-            admin={adminData} onSubmit={onSubmitHandler2} valueLanguage={valueLanguage} />
+            admin={adminData} onSubmit={onSubmitHandler2}  onChange2={onChange2}  valueLanguage={language}  />
           </div>
         </div>
       </main>

@@ -50,9 +50,12 @@ export default function InstructorTable({ data, columns, totalData , idCenter })
       setTimeout(() => {
         setShow(false)
       }, 4000);
+
+      window.location.reload(false);
+      
      })
      //navigate(`/center`);
-     window.location.reload(false);
+     
     }
    }
 

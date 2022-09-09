@@ -35,7 +35,7 @@ export default function AddAdminModal({open, setOpen,  refreshFornewAdmins, setR
     e.preventDefault();
     setFormErrors(validate(form))
     if(Object.keys(formErrors).length === 0 )
-    axios.post('http://localhost:5000/api/create-admin', form, { headers: { Authorization: `${token}` } })
+    axios.post('https://ispeak.api.pfe.anypli.com/api/create-admin', form, { headers: { Authorization: `${token}` } })
       .then(res => {
         setMessage(res.data.message)
         /* hide form after save */

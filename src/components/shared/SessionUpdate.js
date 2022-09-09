@@ -79,7 +79,7 @@ export default function CreateSession({ idSession, course, questionData, session
     const onDelete = (id) => {
         if (window.confirm("are you sure to delete this course")) {
 
-            axios.delete(`http://localhost:5000/api/${idCenter}/course/${id}/${idSession}`, { headers: { Authorization: `${token}` } })
+            axios.delete(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/course/${id}/${idSession}`, { headers: { Authorization: `${token}` } })
               .then(res => {
                 setMessage(res.data.message)
                 setShow(true)

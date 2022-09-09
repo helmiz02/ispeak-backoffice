@@ -38,7 +38,7 @@ export default function AddQuestionModal({ open, setOpen, refreshFornewCourses, 
         form.keywords = keywordsArray
         console.log(form);
         if (quesListe.length < 10)
-            axios.post('http://localhost:5000/api/628f7b8cddfc7db7168acb23/question', form, { headers: { Authorization: `${token}` } })
+            axios.post('https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/question', form, { headers: { Authorization: `${token}` } })
                 .then(res => {
                     console.log([...quesListe, res.data])
                     setMessage()

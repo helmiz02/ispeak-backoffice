@@ -16,9 +16,9 @@ export default function ChatPage({ idLearner, idInstructor }) {
   const token = localStorage.getItem("token");
 
   const getMessage = () => {
-    //`http://localhost:5000/api/628f7b8cddfc7db7168acb23/getMessagesByOne/${idLearner}/${idInstructor}/`
-    //`http://localhost:5000/api/628f7b8cddfc7db7168acb23/getMessagesByOne/630a5a1b27ad109dea61177a/630a57675cf77d8fc7dc671c/`
-    axios.get(`http://localhost:5000/api/628f7b8cddfc7db7168acb23/getMessagesByOne/${idLearner}/${idInstructor}/`, { headers: { Authorization: `${token}` } }).then(res => {
+    //`https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/getMessagesByOne/${idLearner}/${idInstructor}/`
+    //`https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/getMessagesByOne/630a5a1b27ad109dea61177a/630a57675cf77d8fc7dc671c/`
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/getMessagesByOne/${idLearner}/${idInstructor}/`, { headers: { Authorization: `${token}` } }).then(res => {
       setMessages(res.data)
       console.log("messss", res.data);
     })
@@ -33,7 +33,7 @@ export default function ChatPage({ idLearner, idInstructor }) {
   const submitForm = (e) => {
     e.preventDefault()
     setMessageToSend("")
-    axios.post(`http://localhost:5000/api/628f7b8cddfc7db7168acb23/message/${idInstructor}`, {
+    axios.post(`https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/message/${idInstructor}`, {
       "content": messageToSend,
       "receiver": idLearner
     }

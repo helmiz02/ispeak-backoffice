@@ -24,7 +24,7 @@ export default function DetailsTest() {
 
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${centerId}/test/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${centerId}/test/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setTestData(res.data);
       setQuestionData(res.data.question)      
     })
@@ -35,7 +35,7 @@ export default function DetailsTest() {
   const OnDelete = ()=>{
     if(window.confirm("are you sure to delete this session")){
  
-     axios.delete(`http://localhost:5000/api/628f7b8cddfc7db7168acb23/session/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/session/${id}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)

@@ -93,7 +93,7 @@ export default function AdminUpdate({ admin, onSubmit, onChangeHandler}) {
                     />
                     <div class="row">
                          <div class="d-flex justify-content-end" style={{ padding: '0.5rem' }}>
-                            <button className="btn btn-primary" type="submit">Admin Update</button>
+                            <button className="btn btn-primary" type="submit">Update Admin</button>
                          </div>
                     </div>
                 </form>

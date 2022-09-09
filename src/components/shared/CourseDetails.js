@@ -16,43 +16,44 @@ import Paper from "@mui/material/Paper";
 
 
 
-export default function CourseDetails({ data , columnsQuestion, questionData }) {
- 
+export default function CourseDetails({ data, columnsQuestion, questionData }) {
+
   var logo = data.logo
   typeof logo === 'string' ? logo = logo.substr(7) : logo = ""
-    
+
+   var course = data.content
+   typeof course === 'string' ? course = course.substr(7) : course = ""
+   
+   var link = "https://ispeak.api.pfe.anypli.com/"+ course
 
   return (
 
     <div className="row p-4">
       <div className="col-12 col-lg-5">
-        <div class="row" style={{padding: '0.5rem'}}>
-          <div class="col" style={{textAlign: 'left'}} >Id </div>
-          <div class="col" style={{color: '#0071bd'}}>
+        <div class="row" style={{ padding: '0.5rem' }}>
+          <div class="col" style={{ textAlign: 'left' }} >Id </div>
+          <div class="col" style={{ color: '#0071bd' }}>
             {data._id}
           </div>
         </div>
-        <div class="row"style={{padding: '0.5rem'}}>
-          <div class="col" style={{textAlign: 'left'}} >Name </div>
-          <div class="col" style={{color: '#0071bd'}}>
+        <div class="row" style={{ padding: '0.5rem' }}>
+          <div class="col" style={{ textAlign: 'left' }} >Name </div>
+          <div class="col" style={{ color: '#0071bd' }}>
             {data.name}
           </div>
         </div>
-        <div class="row"style={{padding: '0.5rem'}}>
-          <div class="col" style={{textAlign: 'left'}} >content </div>
-          <div class="col" style={{color: '#0071bd'}}>
-            {data.content}
-          </div>
-          <div class="col" style={{padding: '0.5rem' , width:"25%" ,height:"50%"}}>
-            <object data="http://africau.edu/images/default/sample.pdf" type="application/pdf" >
-              <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p>
+        <div class="row" style={{ padding: '0.5rem' }}>
+          <div class="col" style={{ textAlign: 'left' }} >content </div>
+          <div class="col" style={{ color: '#0071bd' }}>
+          <object data={link} type="text/html" >
+              <p>Tap the link <a href={link} >to the PDF!</a></p>
             </object>
-         </div>
+          </div>
         </div>
       </div>
-      <div class="container" style={{padding: '0.5rem'}} >
-        <div class="row" style={{padding: '0.5rem'}}>
-        <div class="col" style={{textAlign: 'left'}} >Question </div>
+      <div class="container" style={{ padding: '0.5rem' }} >
+        <div class="row" style={{ padding: '0.5rem' }}>
+          <div class="col" style={{ textAlign: 'left' }} >Question </div>
         </div>
       </div>
       <TableContainer component={Paper}>
@@ -74,10 +75,10 @@ export default function CourseDetails({ data , columnsQuestion, questionData }) 
                 <TableCell align="left">{row.name}</TableCell>
                 <TableCell align="left">{row.content}</TableCell>
                 <TableCell align="left">{row.choice?.map((item) => (
-                    <div>{item}</div>
+                  <div>{item}</div>
                 ))}</TableCell>
                 <TableCell align="left">{row.keywords?.map((item) => (
-                    <div>{item}</div>
+                  <div>{item}</div>
                 ))}</TableCell>
               </TableRow>
             ))}
@@ -87,4 +88,4 @@ export default function CourseDetails({ data , columnsQuestion, questionData }) 
     </div>
   );
 }
-
+//"http://africau.edu/images/default/sample.pdf"

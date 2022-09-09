@@ -43,7 +43,7 @@ export default function CenterAdmin() {
 
       //https://ispeak.api.pfe.anypli.com/
       useEffect(() => {
-        axios.get(`http://localhost:5000/api/center-admin/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+        axios.get(`https://ispeak.api.pfe.anypli.com/api/center-admin/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
           setCentreData(res.data); 
         })
       }, [])  

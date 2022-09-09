@@ -103,7 +103,7 @@ export default function Center() {
 
   
     
-    axios.post('http://localhost:5000/api/center/', formData, { headers: { Authorization: `${token}`, 'content-type': 'multipart/form-data' }  })
+    axios.post('https://ispeak.api.pfe.anypli.com/api/center/', formData, { headers: { Authorization: `${token}`, 'content-type': 'multipart/form-data' }  })
       .then(res => {
         alert('Center created Successfully')
         navigate(`/center`);
@@ -114,14 +114,14 @@ export default function Center() {
 
   useEffect(() => {
 //https://ispeak.api.pfe.anypli.com/
-    axios.get("http://localhost:5000/api/all-centers/", { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get("https://ispeak.api.pfe.anypli.com/api/all-centers/", { headers: { Authorization: `${token}` } }).then(res => {
       setCentreData(res.data.centers);
       setTotalData(res.data.count);
     });
   }, [])
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/get-admin", { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get("https://ispeak.api.pfe.anypli.com/api/get-admin", { headers: { Authorization: `${token}` } }).then(res => {
       setAdminData(res.data);
     })
   }, [refreshFornewAdmins])

@@ -44,7 +44,7 @@ export default function CenterInstructor() {
 
       //https://ispeak.api.pfe.anypli.com/
       useEffect(() => {
-        axios.get(`http://localhost:5000/api/center-instructor/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+        axios.get(`https://ispeak.api.pfe.anypli.com/api/center-instructor/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
           setCentreData(res.data); 
         })
       }, [])  

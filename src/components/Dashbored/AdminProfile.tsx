@@ -13,7 +13,7 @@ export default function AdminProfile() {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:5000/api/63150cefa4b149bae87b07ce/get-user-by-id/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/63150cefa4b149bae87b07ce/get-user-by-id/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setUserData(res.data)
     })
   }, [])

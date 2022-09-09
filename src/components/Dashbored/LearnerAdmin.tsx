@@ -15,8 +15,8 @@ export default function Admin() {
   const token = localStorage.getItem("token");
  
   useEffect(() => { 
-  //http://localhost:5000/api/get-instructor
-    axios.get(`http://localhost:5000/api/${id}/get-learner-center/`, { headers: { Authorization: `${token}` } }).then(res => {
+  //https://ispeak.api.pfe.anypli.com/api/get-instructor
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${id}/get-learner-center/`, { headers: { Authorization: `${token}` } }).then(res => {
       setAdminData(res.data);
       setTotalData(res.data.count);
     })

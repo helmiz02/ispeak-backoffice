@@ -38,7 +38,7 @@ export default function SessionCreate() {
   });
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setSessionData(res.data);
       setQuestionData(res.data.question)
       setBeginDateData(res.data.beginDate)
@@ -52,7 +52,7 @@ export default function SessionCreate() {
   }, [])
 
   useEffect(() => { 
-    axios.get(`http://localhost:5000/api/${idCenter}/get-instructor-center/`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/get-instructor-center/`, { headers: { Authorization: `${token}` } }).then(res => {
       setInstructorData(res.data);
     })
   }, [refreshFornewAdmins])
@@ -112,7 +112,7 @@ export default function SessionCreate() {
     
 
     
-    axios.put( `http://localhost:5000/api/${idCenter}/session/${id}`, form, { headers: { Authorization: `${token}` }  })
+    axios.put( `https://ispeak.api.pfe.anypli.com/api/${idCenter}/session/${id}`, form, { headers: { Authorization: `${token}` }  })
       .then(res => {
         alert('Session created Successfully')
         navigate(`/detailsCenterAdmin/${idCenter}`);

@@ -36,7 +36,7 @@ export default function InstructorSuperAdminTable({ data, columns }) {
   const OnDelete = (id)=>{
     if(window.confirm("are you sure to delete this instructor")){
  
-     axios.delete(`http://localhost:5000/api/user/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`https://ispeak.api.pfe.anypli.com/api/user/${id}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)

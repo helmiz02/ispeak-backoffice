@@ -29,7 +29,7 @@ export default function ProfileAdmin({ data }) {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    axios.put(`http://localhost:5000/api/63150cefa4b149bae87b07ce/user/password/${data._id}`, form, { headers: { Authorization: `${token}` } })
+    axios.put(`https://ispeak.api.pfe.anypli.com/api/63150cefa4b149bae87b07ce/user/password/${data._id}`, form, { headers: { Authorization: `${token}` } })
       .then(res => {
         setMessage(res.data.message)
         /* hide form after save */
@@ -59,7 +59,7 @@ export default function ProfileAdmin({ data }) {
   const OnDelete = (id) => {
     if (window.confirm("are you sure to delete this center")) {
 
-      axios.delete(`http://localhost:5000/api/center/${id}`, { headers: { Authorization: `${token}` } })
+      axios.delete(`https://ispeak.api.pfe.anypli.com/api/center/${id}`, { headers: { Authorization: `${token}` } })
         .then(res => {
           setMessage(res.data.message)
           setShow(true)

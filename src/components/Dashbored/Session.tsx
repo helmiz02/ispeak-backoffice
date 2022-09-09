@@ -16,7 +16,7 @@ export default function Session() {
 
   useEffect(() => {//https://ispeak.api.pfe.anypli.com/
 
-    axios.get("http://localhost:5000/api/628f7b8cddfc7db7168acb23/sessions/", { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get("https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/sessions/", { headers: { Authorization: `${token}` } }).then(res => {
       setCentreData(res.data);
       setTotalData(res.data.count);
     })

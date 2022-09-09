@@ -74,13 +74,15 @@ export default function CreateCourse({ refreshFornewCourses, setRefresh, idCente
         formData.append("content", fileName)
 
 
-        axios.post(`http://localhost:5000/api/${idCenter}/course/${idSession}`, formData, { headers: { Authorization: `${token}`, 'content-type': 'multipart/form-data' } })
+        axios.post(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/course/${idSession}`, formData, { headers: { Authorization: `${token}`, 'content-type': 'multipart/form-data' } })
             .then(res => {
-                console.log(res.data.course._id); 
+                alert('Course Created')
                 navigate(`/detailsSession/${idSession}/${idCenter}`);
 
             })
-            .catch(err => setErrors(err.response.data))
+            .catch(err => {
+                alert('err')
+                setErrors(err.response.data)})
 
     }
     return (
@@ -98,12 +100,16 @@ export default function CreateCourse({ refreshFornewCourses, setRefresh, idCente
                 name="content"
                 onChangeHandler={(e) => { onChangeFile(e) }}
             />
-            Create new quetion
-            <Button variant="outlined" onClick={() => handelClick("choiseQuestion")} >QCM</Button>
-            <Button variant="outlined" onClick={() => handelClick("paragraphBasedQuestion")} >Paragraph</Button>
-            <Button variant="outlined" onClick={() => handelClick("synonymAntonym")} >Synonym</Button>
-
-
+            
+                <div class="row" >
+                    <div class="col" style={{padding: '0.5rem'}}  >New Question</div>
+                    <div class="col" style={{padding: '0.5rem'}}>
+                    <Button variant="outlined" onClick={() => handelClick("choiseQuestion")} >QCM</Button>
+                    <Button variant="outlined" onClick={() => handelClick("paragraphBasedQuestion")} >Paragraph</Button>
+                    <Button variant="outlined" onClick={() => handelClick("synonymAntonym")} >Synonym</Button>
+                    </div>
+                </div>
+            
             <QuesToaddTable
                 data={quesListe ? quesListe : []} totalData={quesListe.length} columns={columns}
             />

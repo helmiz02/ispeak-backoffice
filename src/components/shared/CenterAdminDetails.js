@@ -59,7 +59,7 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
     
     if(window.confirm("are you sure to delete this test")){
  
-      axios.delete(`http://localhost:5000/api/${idCenter}/test/${id}`, { headers: { Authorization: `${token}` } })
+      axios.delete(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/test/${id}`, { headers: { Authorization: `${token}` } })
       .then(res=>{
        setMessage(res.data.message)
        setShow(true)
@@ -84,16 +84,19 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
 
     if(window.confirm("are you sure to delete this session")){
  
-      axios.delete(`http://localhost:5000/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } })
+      axios.delete(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/session/${id}`, { headers: { Authorization: `${token}` } })
       .then(res=>{
        setMessage(res.data.message)
        setShow(true)
        setTimeout(() => {
          setShow(false)
        }, 4000);
+
+       window.location.reload(false);
       })
       //navigate(`/center`);
-      window.location.reload(false);
+      //window.location.reload(false);
+      //navigate(`/detailsCenterAdmin/${idCenter}`);
      }
   } 
   
@@ -109,7 +112,7 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
           <div class="col">
             <img
               src={
-                "http://localhost:5000/" + logo
+                "https://ispeak.api.pfe.anypli.com/" + logo
               }
               alt="logocentre"
               style={{ width: 150 }}
@@ -167,7 +170,7 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
             <h4 style={{ textAlign: 'left', padding: '0.5rem' }} > Test : </h4>
           </div>
           <div class="col-md-auto" style={{ padding: '0.5rem' }}>
-            <Button onClick={() => handelClick()} >Create Test</Button>
+            <Button style={{color:"#1976d2"}} onClick={() => handelClick()} >Create Test</Button>
           </div>
         </div>
       </div>
@@ -188,9 +191,9 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
               >
                 <TableCell align="left">{row.language}</TableCell>
                 <TableCell align="left">
-                  <Button color="secondary" onClick={() => OnDetailsTest(row._id)} >Details</Button>
-                  <Button onClick={() => onUpdateTest(row._id)} >Update</Button>
-                  <Button color="error" onClick={() => onDeleteTest(row._id)} >Delete</Button>
+                  <Button style={{color:"#9c27b0"}} onClick={() => OnDetailsTest(row._id)} >Details</Button>
+                  <Button style={{color:"rgb(25,118,210)"}} onClick={() => onUpdateTest(row._id)} >Update</Button>
+                  <Button style={{color:"rgb(211,47,47)"}} onClick={() => onDeleteTest(row._id)} >Delete</Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -203,7 +206,7 @@ export default function CenterAdminDetails({ data, sessionData, columns, testDat
             <h4> Session : </h4>
           </div>
           <div class="col-md-auto">
-            <Button onClick={() => handelClick2()} >Create Session</Button>
+            <Button style={{color:"#1976d2"}} onClick={() => handelClick2()} >Create Session</Button>
           </div>
         </div>
       </div>

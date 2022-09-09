@@ -7,7 +7,7 @@ export default function Course() {
   
   // useEffect(() => {//https://ispeak.api.pfe.anypli.com/
 
-  //   axios.get("http://localhost:5000/api/all-centers/", { headers: { Authorization: `${token}` } }).then(res => {
+  //   axios.get("https://ispeak.api.pfe.anypli.com/api/all-centers/", { headers: { Authorization: `${token}` } }).then(res => {
   //     setCentreData(res.data.centers);
   //     setTotalData(res.data.count);
   //   })

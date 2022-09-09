@@ -36,7 +36,7 @@ export default function LearnerAdminTable({ data, columns, totalData , idCenter 
   const OnDelete = (id)=>{
     if(window.confirm("are you sure to delete this learner")){
  
-     axios.delete(`http://localhost:5000/api/${idCenter}/user/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/user/${id}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)

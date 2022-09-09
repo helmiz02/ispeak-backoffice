@@ -6,6 +6,7 @@ import QuesToaddTable from "./quesToaddTable";
 import axios from 'axios'
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import {useNavigate} from 'react-router-dom';
 
 export default function CreateTest({ valueLanguage, refreshFornewCourses, setRefresh, onChange2, onChangeLanguage, onChangeHandler2, centerId }) {
 
@@ -21,12 +22,15 @@ export default function CreateTest({ valueLanguage, refreshFornewCourses, setRef
 
     const columns = [
         { id: 'id', label: 'Id', minWidth: 170 },
+        { id: 'type', label: 'Type', minWidth: 170 },
         { id: 'name', label: 'Name', minWidth: 170 },
         { id: 'content', label: 'Content', minWidth: 170 },
         { id: 'choice', label: 'Choice', minWidth: 170 },
         { id: 'keywords', label: 'keywords ', minWidth: 170 },
         { id: 'actions', label: 'Actions', minWidth: 170 },
     ];
+
+    const navigate = useNavigate();
 
     const onChangeHandler = (e) => {
         /*setForm({
@@ -46,34 +50,23 @@ export default function CreateTest({ valueLanguage, refreshFornewCourses, setRef
         return newArry
     }
 
-    const onChangeFile = (e) => {
-        setFileName(e.target.files[0]);
-        console.log(e.target.files[0])
-    }
+    
     const onSubmitHandler = async (e) => {
 
         e.preventDefault();
 
         const questionl = await refacturingArrIDS()
-        //form.question = question
+
         form.language = valueLanguage
         form.question = questionl
 
-        console.log("DDDD", form);
-
-        /*const formData = new FormData();
-        formData.append("name", name)
-        for (var i = 0; i < questionl.length; i++) {
-            formData.append("question", questionl[i])
-        }
-        formData.append("content", fileName)*/
-
-        axios.post(`http://localhost:5000/api/${centerId}/test`, form, { headers: { Authorization: `${token}` } })
+        axios.post(`https://ispeak.api.pfe.anypli.com/api/${centerId}/test`, form, { headers: { Authorization: `${token}` } })
             .then(res => {
-
-
+                alert('Test Created')
+                navigate(`/detailsCenterAdmin/${centerId}`);
             })
-            .catch(err => setErrors(err.response.data))
+            .catch(err =>{ alert('err')
+                setErrors(err.response.data)})
 
     }
     return (

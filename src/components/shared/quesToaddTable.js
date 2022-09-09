@@ -24,7 +24,7 @@ export default function QuesToaddTable({ data, columns, totalData, centerId }) {
   const OnDelete = (id) => {
     if (window.confirm("are you sure to delete this question")) {
 
-      axios.delete(`http://localhost:5000/api/${centerId}/question/${id}`, { headers: { Authorization: `${token}` } })
+      axios.delete(`https://ispeak.api.pfe.anypli.com/api/${centerId}/question/${id}`, { headers: { Authorization: `${token}` } })
         .then(res => {
           setMessage(res.data.message)
           setShow(true)

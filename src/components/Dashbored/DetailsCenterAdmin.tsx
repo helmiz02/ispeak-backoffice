@@ -38,21 +38,21 @@ export default function DetailsCenterAdmin() {
 
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${id}/center/`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${id}/center/`, { headers: { Authorization: `${token}` } }).then(res => {
       setCentreData(res.data)
     })
   }, []) 
 
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${id}/sessions/`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${id}/sessions/`, { headers: { Authorization: `${token}` } }).then(res => {
       setSessionData(res.data)
     })
   }, [])
 
   useEffect(() => {//https://ispeak.api.pfe.anypli.com/
 
-    axios.get(`http://localhost:5000/api/${id}/tests/`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${id}/tests/`, { headers: { Authorization: `${token}` } }).then(res => {
         setTestData(res.data)
     })
 }, [])
@@ -77,8 +77,8 @@ export default function DetailsCenterAdmin() {
           <div className="btn-toolbar mb-2 mb-md-0">
             {
             <div className="btn-group me-2">
-              <Button variant="outlined"   onClick={()=>onclick()} >INSTRUCTOR LIST</Button>
-              <Button variant="outlined"   onClick={()=>onclick2()} >LEARNER LIST</Button>
+              <Button variant="outlined"   style={{color:"#1976d2", padding: '0.5rem'}} onClick={()=>onclick()} >INSTRUCTOR LIST</Button>
+              <Button variant="outlined"   style={{color:"#1976d2", padding: '0.5rem'}} onClick={()=>onclick2()} >LEARNER LIST</Button>
             </div>
              }
           </div>  

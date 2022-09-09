@@ -42,7 +42,7 @@ export default function DataTable({ data, columns, totalData }) {
   const OnDelete = (id)=>{
     if(window.confirm("are you sure to delete this center")){
  
-     axios.delete(`http://localhost:5000/api/center/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`https://ispeak.api.pfe.anypli.com/api/center/${id}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)
@@ -80,7 +80,7 @@ export default function DataTable({ data, columns, totalData }) {
                 {row.logo && (
                   <img
                     src={  //https://ispeak.api.pfe.anypli.com/
-                      "http://localhost:5000/" + row.logo.substr(7)
+                      "https://ispeak.api.pfe.anypli.com/" + row.logo.substr(7)
                     }
                     alt="logocentre"
                     style={{ width: 40 }}
@@ -103,8 +103,8 @@ export default function DataTable({ data, columns, totalData }) {
               </TableCell>
               <TableCell align="left">
                 <div><Button style={{color:"#9c27b0"}} onClick={()=>handelClick(row._id) } >Details</Button></div>
-                <div><Button style={{color:"rgb(25,118,210)"}} onClick={()=>OnUpdate(row._id)} >Update center</Button></div>
-                <div><Button style={{color:"rgb(211,47,47)"}} onClick={()=>OnDelete(row._id)}  >Delete center</Button></div>
+                <div><Button style={{color:"rgb(25,118,210)"}} onClick={()=>OnUpdate(row._id)} >Update </Button></div>
+                <div><Button style={{color:"rgb(211,47,47)"}} onClick={()=>OnDelete(row._id)}  >Delete </Button></div>
               </TableCell>
             </TableRow>
           ))}

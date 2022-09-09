@@ -40,21 +40,21 @@ export default function DetailsCenterAdmin() {
 
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${id}/center/`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${id}/center/`, { headers: { Authorization: `${token}` } }).then(res => {
       setCentreData(res.data)
     })
   }, []) 
 
   useEffect(() => { 
 
-    axios.get(`http://localhost:5000/api/${id}/getSessionByCenterAndInstructor/${idInstructor}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${id}/getSessionByCenterAndInstructor/${idInstructor}`, { headers: { Authorization: `${token}` } }).then(res => {
       setSessionData(res.data)
     })
   }, [])
 
   useEffect(() => {//https://ispeak.api.pfe.anypli.com/
 
-    axios.get("http://localhost:5000/api/628f7b8cddfc7db7168acb23/tests/", { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get("https://ispeak.api.pfe.anypli.com/api/628f7b8cddfc7db7168acb23/tests/", { headers: { Authorization: `${token}` } }).then(res => {
         setTestData(res.data)
     })
 }, [])

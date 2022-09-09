@@ -59,7 +59,7 @@ export default function DataTable({ data, columns, totalData }) {
                 {row.logo && (
                   <img
                     src={  //https://ispeak.api.pfe.anypli.com/
-                      "http://localhost:5000/" + row.logo.substr(7)
+                      "https://ispeak.api.pfe.anypli.com/" + row.logo.substr(7)
                     }
                     alt="logocentre"
                     style={{ width: 24 }}

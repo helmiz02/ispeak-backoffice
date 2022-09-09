@@ -31,7 +31,7 @@ export default function SessionCreate() {
   const [instructorData, setInstructorData] = useState([]);
 
   useEffect(() => { 
-    axios.get(`http://localhost:5000/api/${idCenter}/get-instructor-center/`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/get-instructor-center/`, { headers: { Authorization: `${token}` } }).then(res => {
       setInstructorData(res.data);
     })
   }, [refreshFornewAdmins])
@@ -91,7 +91,7 @@ export default function SessionCreate() {
     
 
     
-    axios.post( `http://localhost:5000/api/${idCenter}/session/`, form, { headers: { Authorization: `${token}` }  })
+    axios.post( `https://ispeak.api.pfe.anypli.com/api/${idCenter}/session/`, form, { headers: { Authorization: `${token}` }  })
       .then(res => {
         alert('Session created Successfully')
         navigate(`/detailsCenterAdmin/${idCenter}`);

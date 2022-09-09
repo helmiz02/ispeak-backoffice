@@ -36,7 +36,7 @@ export default function CenterDetails({ data, columnsCourse, admin, course, idCe
   const onDelete = (id) => {
     if (window.confirm("are you sure to delete this course")) {
 
-        axios.delete(`http://localhost:5000/api/${idCenter}/course/${id}/${data._id}`, { headers: { Authorization: `${token}` } })
+        axios.delete(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/course/${id}/${data._id}`, { headers: { Authorization: `${token}` } })
           .then(res => {
             setMessage(res.data.message)
             setShow(true)

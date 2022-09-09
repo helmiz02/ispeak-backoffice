@@ -83,16 +83,16 @@ export default function UpdateAdmin() {
     
      console.log("====",form)
     
-    axios.put(`http://localhost:5000/api/user/${id}`, form, { headers: { Authorization: `${token}` }  })
+    axios.put(`https://ispeak.api.pfe.anypli.com/api/user/${id}`, form, { headers: { Authorization: `${token}` }  })
       .then(res => {
-        alert('User updated Successfully')
+        alert('Admin updated Successfully')
         navigate(`/admin`);
       })
       .catch(err => setErrors(err.response.data))
   }
    useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/user/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/user/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
         console.log("centreDataff",res);
         setAdminData(res.data);
     })

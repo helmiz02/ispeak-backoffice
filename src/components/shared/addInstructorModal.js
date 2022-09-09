@@ -35,7 +35,7 @@ export default function AddInstructorModal({open, setOpen,  refreshFornewAdmins,
     console.log(form);
     setFormErrors(validate(form))
     if(Object.keys(formErrors).length === 0 )
-    axios.post(`http://localhost:5000/api/${idCenter}/create-instructor`, form, { headers: { Authorization: `${token}` } })
+    axios.post(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/create-instructor`, form, { headers: { Authorization: `${token}` } })
       .then(res => {
         setMessage(res.data.message)
         /* hide form after save */

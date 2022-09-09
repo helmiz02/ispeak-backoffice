@@ -38,7 +38,7 @@ export default function AdminTable({ data, columns, totalData }) {
   const OnDelete = (id)=>{
     if(window.confirm("are you sure to delete this admin")){
  
-     axios.delete(`http://localhost:5000/api/delete-admin/${id}`, { headers: { Authorization: `${token}` } })
+     axios.delete(`https://ispeak.api.pfe.anypli.com/api/delete-admin/${id}`, { headers: { Authorization: `${token}` } })
      .then(res=>{
       setMessage(res.data.message)
       setShow(true)

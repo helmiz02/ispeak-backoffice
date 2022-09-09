@@ -39,7 +39,7 @@ export default function UpdateTest() {
 
   useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/${idCenter}/test/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/${idCenter}/test/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
       setTestData(res.data);
       setQuestionData(res.data.question)
       setLoading(false)
@@ -97,7 +97,7 @@ export default function UpdateTest() {
      formData.append("phone", data.phone)
      console.log("====",data.firstName)
     
-    axios.put(`http://localhost:5000/api/user/${id}`, formData, { headers: { Authorization: `${token}`, 'content-type': 'multipart/form-data' }  })
+    axios.put(`https://ispeak.api.pfe.anypli.com/api/user/${id}`, formData, { headers: { Authorization: `${token}`, 'content-type': 'multipart/form-data' }  })
       .then(res => {
         alert('User updated Successfully')
         navigate(`/admin`);
@@ -106,7 +106,7 @@ export default function UpdateTest() {
   }
    useEffect(() => { 
     
-    axios.get(`http://localhost:5000/api/user/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get(`https://ispeak.api.pfe.anypli.com/api/user/${id}`, { headers: { Authorization: `${token}` } }).then(res => {
         console.log("centreDataff",res);
         setAdminData(res.data);
     })

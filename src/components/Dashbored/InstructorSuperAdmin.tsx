@@ -11,7 +11,7 @@ export default function InstructorSuperAdmin() {
 
   useEffect(() => {
 
-    axios.get("http://localhost:5000/api/get-instructor", { headers: { Authorization: `${token}` } }).then(res => {
+    axios.get("https://ispeak.api.pfe.anypli.com/api/get-instructor", { headers: { Authorization: `${token}` } }).then(res => {
       setAdminData(res.data);
       setTotalData(res.data.count);
     })

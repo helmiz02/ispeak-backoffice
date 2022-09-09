@@ -44,7 +44,7 @@ input[type="text"] {
     font-size: 14;
 }
 `;
-export default function InstructorUpdate({ admin, onSubmit, valueLanguage}) {
+export default function InstructorUpdate({ admin, onSubmit, valueLanguage, onChange2 }) {
 
     
 
@@ -110,21 +110,9 @@ export default function InstructorUpdate({ admin, onSubmit, valueLanguage}) {
                         </div>
 
                         <div class="col" style={{ padding: '0.5rem' }}>
-                            <Select
-
-                                labelId="language"
-                                id="Language"
-                                value={centerDataState.language}
-                                label="Language"
-                                name="language"
-                                fullWidth
-                                onChange={(e) => {  }}
-                            >
-                                {valueLanguage?.map((item) => (
-                                    <MenuItem value={item}>{item}</MenuItem>
-                                ))}
-
-                            </Select>
+                            
+                                {centerDataState.language}
+                               
                         </div>
                     </div>
                     <div class="row">
